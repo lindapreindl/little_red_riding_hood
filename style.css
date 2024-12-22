@@ -1,0 +1,218 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: 'Roboto Mono';
+  margin: 0;
+  padding: 0;
+  background-color: #0e1224;
+}
+
+canvas {
+  background-color: rgb(63, 47, 47);
+  width: 800px;
+  height: 500px;
+  border: 14px groove lightgrey;
+}
+
+.control {
+  margin-bottom: 10vh;
+}
+
+.d-none {
+  display: none;
+}
+
+.bg-start {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: 1;
+}
+
+p,
+h2 {
+  color: white;
+  z-index: 7;
+  margin: 0;
+}
+
+.container {
+  height: 80vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.archer {
+  z-index: 2;
+  position: relative;
+  width: 250px;
+}
+
+.tree {
+  z-index: 2;
+  width: 250px;
+}
+
+.title {
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}
+
+h1 {
+  z-index: 4;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.textbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  overflow-y: scroll;
+  margin-bottom: 10vh;
+  z-index: 10;
+}
+
+a {
+  z-index: 8;
+}
+
+button {
+  z-index: 8;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid black 2px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+
+#scroll-container {
+  height: 70vh;
+  overflow: hidden;
+}
+
+#scroll-text {
+  height: 100%;
+
+  /* animation properties */
+  -moz-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+
+  -moz-animation: my-animation 50s linear infinite;
+  -webkit-animation: my-animation 50s linear infinite;
+  animation: my-animation 50s linear infinite;
+}
+
+.game-over-div {
+  margin-top: 30vh;
+  height: 70vh;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-over-div h1 {
+  font-size: 70px;
+  animation-name: animation_blink;
+  animation-timing-function: ease-in;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animation_blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+#archer-game-over {
+  height: 40vh;
+
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from {
+    -moz-transform: translateY(100%);
+  }
+
+  to {
+    -moz-transform: translateY(-100%);
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateY(100%);
+  }
+
+  to {
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+
+  to {
+    -moz-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+
+/* roboto-mono-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/roboto-mono-v23-latin-regular.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* roboto-mono-500 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/roboto-mono-v23-latin-500.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
