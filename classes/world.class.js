@@ -24,11 +24,11 @@ class World {
         setInterval(() => {
             
             this.checkCollisions();
-            this.chechThrowObjects();
+            this.checkThrowObjects();
         }, 200);
     }
 
-    chechThrowObjects(){
+    checkThrowObjects(){
         if (this.keyboard.D) {
             let flame = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObject.push(flame);
