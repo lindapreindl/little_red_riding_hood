@@ -18,8 +18,13 @@ canvas {
   border: 14px groove lightgrey;
 }
 
-.control {
+#control, #dead {
   margin-bottom: 10vh;
+}
+
+#dead {
+  color: red;
+  font-weight: bold;
 }
 
 .d-none {

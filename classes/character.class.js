@@ -51,7 +51,7 @@ class Character extends MovableObject {
         this.applyGravity();
         this.animate();
     }
-    
+
 
     stopControl(){
         window.addEventListener('keydown', (event) =>{
@@ -120,6 +120,8 @@ class Character extends MovableObject {
         let t = setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                    document.getElementById('control').classList.add('d-none');
+                    document.getElementById('dead').classList.remove('d-none');
                     this.stopControl();
                     stopAnimation(t);
                     setTimeout(() => {
