@@ -47,12 +47,18 @@ class World {
         })
 
         //*css*/`
-        this.throwableObject.forEach((flame) =>{
-            if(this.level.enemies[0].isColliding(flame)){
-                console.log('Collision with flame and ENEMY');
-            }
-           
-        })    
+        for (let i = 0; i < this.level.enemies.length; i++) {
+            let enemy = this.level.enemies[i];
+            this.throwableObject.forEach((flame) =>{
+                if(enemy.isColliding(flame)){
+                    console.log('Collision with flame and', enemy);
+                    // this.enemy.hit(enemy);
+                console.log('Enemy', this.werewolf.energy);
+                }
+                
+            })    
+        }
+       
         //*css*/`
           
 
