@@ -18,7 +18,8 @@ canvas {
   border: 14px groove lightgrey;
 }
 
-#control, #dead {
+#control,
+#dead {
   margin-bottom: 10vh;
 }
 

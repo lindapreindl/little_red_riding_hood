@@ -45,6 +45,17 @@ class World {
                 this.statusBar.setPercentage(this.character.energy);
             }
         })
+
+        //*css*/`
+        this.throwableObject.forEach((flame) =>{
+            if(this.level.enemies[0].isColliding(flame)){
+                console.log('Collision with flame and ENEMY');
+            }
+           
+        })    
+        //*css*/`
+          
+
         this.level.gems.forEach((gem) =>{
             if(this.character.isColliding(gem)){
                 console.log('Collision with character and', gem);
