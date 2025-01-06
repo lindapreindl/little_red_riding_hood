@@ -71,6 +71,16 @@ class MovableObject extends DrawableObject {
         }
     }
 
+    enemyHitted(i) {
+        this.enemies[i].energy -= 2;
+        if (this.enemies[i].energy < 0) {
+            this.enemies[i].energy = 0;
+        } else {
+            console.log("did not work");
+            //this.lastHit = new Date().getTime();
+        }
+    }
+
     dead() {
         this.timeOfDeath = new Date().getTime();
         

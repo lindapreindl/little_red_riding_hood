@@ -51,9 +51,17 @@ class World {
             let enemy = this.level.enemies[i];
             this.throwableObject.forEach((flame) =>{
                 if(enemy.isColliding(flame)){
-                    console.log('Collision with flame and', enemy);
+                    console.log('Collision with flame and', enemy , i);
+                    this.level.enemy.enemyHitted(i);  //geht noch nicht
+                    console.log(this.level.enemy.energy);  // geht auch noch nicht
+                        //warum nicht möglich auf werewolf energy zuzugreifen?
+
+
+
                     // this.enemy.hit(enemy);
-                console.log('Enemy', this.werewolf.energy);
+                //console.log('Enemy', this.werewolf.energy);
+                //hit funktion umschreiben, damit werewolf.energy adressiert werden kann und character.energy
+                //allgemein energy auf character.energy umstellen, weil sonst die energy aus movable obj genommen wird
                 }
                 
             })    

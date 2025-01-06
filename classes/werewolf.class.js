@@ -1,5 +1,6 @@
 class Werewolf extends MovableObject {
 
+    energy = 20;    
     height = 70;
     width = 100;
     y = 75;
