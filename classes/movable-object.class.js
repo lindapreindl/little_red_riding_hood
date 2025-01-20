@@ -5,7 +5,9 @@ class MovableObject extends DrawableObject {
     speedY = 0;
     acceleration = 2;
     energy = 100;
+    endBossEnergy = 100;
     lastHit = 0;
+    endBossLastHit = 0;
     timeOfDeath = 0;
 
 
@@ -71,10 +73,19 @@ class MovableObject extends DrawableObject {
         }
     }
 
+    hitEndboss() {
+        this.endBossEnergy -= 2;
+        if (this.endBossEnergy < 0) {
+            this.endBossEnergy = 0;
+        } else {
+            this.endBossLastHit = new Date().getTime();
+        }
+    }
+
     enemyHitted(i) {
-        this.enemies[i].energy -= 2;
-        if (this.enemies[i].energy < 0) {
-            this.enemies[i].energy = 0;
+        World.level.enemies[i].energy -= 2;
+        if (World.level.enemies[i].energy < 0) {
+            World.level.enemies[i].energy = 0;
         } else {
             console.log("did not work");
             //this.lastHit = new Date().getTime();

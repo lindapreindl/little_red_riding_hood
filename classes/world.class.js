@@ -43,10 +43,15 @@ class World {
                 this.character.hit();
                 console.log(this.character.energy);
                 this.statusBar.setPercentage(this.character.energy);
+                if (enemy == "new Endboss()") {
+                    console.log('hat geklappt');
+                }
             }
         })
 
-        //*css*/`
+
+        /*
+        
         for (let i = 0; i < this.level.enemies.length; i++) {
             let enemy = this.level.enemies[i];
             this.throwableObject.forEach((flame) =>{
@@ -67,7 +72,8 @@ class World {
             })    
         }
        
-        //*css*/`
+        
+        */
           
 
         this.level.gems.forEach((gem) =>{
