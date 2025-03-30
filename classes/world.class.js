@@ -102,6 +102,7 @@ class World {
             this.gemBarColour = 'white';
             console.log('changed color');
         }
+        console.log('helloooo');
     }
 
 
