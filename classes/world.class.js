@@ -9,7 +9,7 @@ class World {
     gemBar = new GemBar();
     gemcount = 0;
     gemBarColour = 'red';
-    throwableObject = [];
+    throwableObject = new ThrowableObject(); // geht schonmal nicht, ist der Fehler momentan. aber warum?
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -43,12 +43,11 @@ class World {
                 this.character.hit();
                 console.log(this.character.energy);
                 this.statusBar.setPercentage(this.character.energy);
-                if (enemy == "new Endboss()") {
-                    console.log('hat geklappt');
-                }
+                
             }
         })
 
+        
 
         /*
         
@@ -102,7 +101,6 @@ class World {
             this.gemBarColour = 'white';
             console.log('changed color');
         }
-        console.log('helloooo');
     }
 
 

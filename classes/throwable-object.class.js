@@ -1,5 +1,5 @@
 class ThrowableObject extends MovableObject {
-d
+
 
     constructor() {
         super().loadImage('./img/flames/flame10/PNG/00.png');

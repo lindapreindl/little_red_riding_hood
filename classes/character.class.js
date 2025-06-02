@@ -3,6 +3,7 @@ class Character extends MovableObject {
     y = 10;
     width = 100;
     speed = 10;
+    
     IMAGES_WALKING = [
         'img/archer/walk1.png',
         'img/archer/walk2.png',
