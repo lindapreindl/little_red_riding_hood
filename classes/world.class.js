@@ -9,7 +9,7 @@ class World {
     gemBar = new GemBar();
     gemcount = 0;
     gemBarColour = 'red';
-    throwableObject = new ThrowableObject(); // geht schonmal nicht, ist der Fehler momentan. aber warum?
+    throwableObject = []; 
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -46,6 +46,31 @@ class World {
                 
             }
         })
+
+        if (this.throwableObject[0]) {
+            this.level.enemies.forEach((enemy) =>{
+            if(this.throwableObject[0].isColliding(enemy)){
+                console.log('HITTED',enemy);
+                
+                
+            }
+        })
+        }
+
+        /*if (this.throwableObject != 0) {
+            for (let i = 0; i < throwableObject.length; i++) {
+            let flame = this.throwableObject[i];
+            
+            
+            this.level.enemies.forEach((enemy) =>{
+            if(this.flame.isColliding(enemy)){
+                console.log('HITTED',enemy);
+                
+            }
+        })
+        }
+        }dit funktioniert noch nit
+        
 
         
 
