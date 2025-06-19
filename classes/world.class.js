@@ -9,7 +9,7 @@ class World {
     gemBar = new GemBar();
     gemcount = 0;
     gemBarColour = 'red';
-    throwableObject = []; 
+    throwableObject = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -20,15 +20,15 @@ class World {
         this.run();
     }
 
-    run(){
+    run() {
         setInterval(() => {
-            
+
             this.checkCollisions();
             this.checkThrowObjects();
         }, 200);
     }
 
-    checkThrowObjects(){
+    checkThrowObjects() {
         if (this.keyboard.D) {
             let flame = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObject.push(flame);
@@ -36,79 +36,40 @@ class World {
     }
 
 
-    checkCollisions(){
-        this.level.enemies.forEach((enemy) =>{
-            if(this.character.isColliding(enemy)){
-                console.log('Collision with character and',enemy);
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                console.log('Collision with character and', enemy);
                 this.character.hit();
                 console.log(this.character.energy);
                 this.statusBar.setPercentage(this.character.energy);
-                
+
             }
         })
 
-        if (this.throwableObject[0]) {
-            this.level.enemies.forEach((enemy) =>{
-            if(this.throwableObject[0].isColliding(enemy)){
-                console.log('HITTED',enemy);
-                
-                
+        if (this.throwableObject != 0) {
+            for (let i = 0; i < this.throwableObject.length; i++) {
+                let flame = this.throwableObject[i];
+
+                this.level.enemies.forEach((enemy) => {
+                    if (flame.isColliding(enemy)) {
+                        console.log('HITTED', enemy);
+                    }
+                })
+
             }
-        })
         }
 
-        /*if (this.throwableObject != 0) {
-            for (let i = 0; i < throwableObject.length; i++) {
-            let flame = this.throwableObject[i];
-            
-            
-            this.level.enemies.forEach((enemy) =>{
-            if(this.flame.isColliding(enemy)){
-                console.log('HITTED',enemy);
-                
-            }
-        })
-        }
-        }dit funktioniert noch nit
-        
 
-        
-
-        /*
-        
-        for (let i = 0; i < this.level.enemies.length; i++) {
-            let enemy = this.level.enemies[i];
-            this.throwableObject.forEach((flame) =>{
-                if(enemy.isColliding(flame)){
-                    console.log('Collision with flame and', enemy , i);
-                    this.level.enemy.enemyHitted(i);  //geht noch nicht
-                    console.log(this.level.enemy.energy);  // geht auch noch nicht
-                        //warum nicht möglich auf werewolf energy zuzugreifen?
-
-
-
-                    // this.enemy.hit(enemy);
-                //console.log('Enemy', this.werewolf.energy);
-                //hit funktion umschreiben, damit werewolf.energy adressiert werden kann und character.energy
-                //allgemein energy auf character.energy umstellen, weil sonst die energy aus movable obj genommen wird
-                }
-                
-            })    
-        }
-       
-        
-        */
-          
-
-        this.level.gems.forEach((gem) =>{
-            if(this.character.isColliding(gem)){
+        this.level.gems.forEach((gem) => {
+            if (this.character.isColliding(gem)) {
                 console.log('Collision with character and', gem);
-                
+
                 gem.id = `gem${gem.x}`;
                 console.log(gem.id);
                 // gemIndex = this.level.gems.indexOf(gem); geht nicht
                 // vllt schauen, dass man das anders löst, als immer nur das erste element zu löschen?
-                this.level.gems.splice(0, 1); 
+                this.level.gems.splice(0, 1);
                 this.addObjectsToMap(this.level.gems);
                 console.log('hidden');
                 this.gemcount++;
@@ -117,12 +78,12 @@ class World {
         })
     }
 
-    checkGembarColour(){
-        if(this.gemcount >= this.level.total_gemcount - this.level.total_gemcount/2){
+    checkGembarColour() {
+        if (this.gemcount >= this.level.total_gemcount - this.level.total_gemcount / 2) {
             this.gemBarColour = 'orange';
             console.log('changed color');
         }
-        if(this.gemcount == this.level.total_gemcount){
+        if (this.gemcount == this.level.total_gemcount) {
             this.gemBarColour = 'white';
             console.log('changed color');
         }
@@ -143,17 +104,16 @@ class World {
         this.addObjectsToMap(this.level.gems);
         this.addObjectsToMap(this.level.clouds);
 
-        this.ctx.translate(-this.camera_x, 0); 
+        this.ctx.translate(-this.camera_x, 0);
         //space for fixed objects
         this.addToMap(this.statusBar);
         this.addToMap(this.gemBar);
-        
         this.ctx.font = "15px Arial";
         this.ctx.fillStyle = this.gemBarColour;
         this.ctx.fillText(this.gemcount + '/' + this.level.total_gemcount, 120, 18);
-        
+
         // - space end
-        this.ctx.translate(this.camera_x, 0); 
+        this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObject)
