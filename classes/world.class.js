@@ -6,6 +6,7 @@ class World {
     keyboard;
     camera_x;
     statusBar = new StatusBar();
+    endbossStatusBar = new EnenmyStatusBar();
     gemBar = new GemBar();
     gemcount = 0;
     gemBarColour = 'red';
@@ -52,8 +53,10 @@ class World {
                 let flame = this.throwableObject[i];
 
                 this.level.enemies.forEach((enemy) => {
+                    let j = this.level.enemies.indexOf(enemy)
                     if (flame.isColliding(enemy)) {
-                        console.log('HITTED', enemy);
+                        this.level.enemies[j].hit();
+                        console.log('HITTED', enemy.energy, enemy);
                     }
                 })
 
@@ -107,6 +110,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
         //space for fixed objects
         this.addToMap(this.statusBar);
+        this.addToMap(this.endbossStatusBar);
         this.addToMap(this.gemBar);
         this.ctx.font = "15px Arial";
         this.ctx.fillStyle = this.gemBarColour;
@@ -115,6 +119,7 @@ class World {
         // - space end
         this.ctx.translate(this.camera_x, 0);
 
+        
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObject)
         this.addToMap(this.character);
