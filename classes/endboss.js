@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
     height = 150;
     width = 180;
     y = -8;
+    speed = 0;
 
     IMAGES_WALKING = [
         './img/werewolf/White_Werewolf/attack1.png',

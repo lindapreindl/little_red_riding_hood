@@ -6,7 +6,8 @@ class World {
     keyboard;
     camera_x;
     statusBar = new StatusBar();
-    endbossStatusBar = new EnenmyStatusBar();
+    enemyStatusBar = new EnemyStatusBar();
+    statusBarsofEnemies = [];
     gemBar = new GemBar();
     gemcount = 0;
     gemBarColour = 'red';
@@ -24,6 +25,7 @@ class World {
     run() {
         setInterval(() => {
 
+            this.generateEnemyStatusbars();
             this.checkCollisions();
             this.checkThrowObjects();
         }, 200);
@@ -34,6 +36,17 @@ class World {
             let flame = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObject.push(flame);
         }
+    }
+
+    generateEnemyStatusbars(){
+        for (let i = 0; i < this.level.enemies.length; i++) {
+            let enemy = this.level.enemies[i];
+            let statusbar = new EnemyStatusBar();
+            statusbar.x = enemy.x;
+            statusbar.y = enemy.y;
+            statusbar.speed = enemy.speed;
+            this.statusBarsofEnemies.push(statusbar);
+                }
     }
 
 
@@ -57,6 +70,7 @@ class World {
                     if (flame.isColliding(enemy)) {
                         this.level.enemies[j].hit();
                         console.log('HITTED', enemy.energy, enemy);
+                        this.statusBarsofEnemies[j].setPercentage(this.level.enemies[j].energy);
                     }
                 })
 
@@ -110,7 +124,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
         //space for fixed objects
         this.addToMap(this.statusBar);
-        this.addToMap(this.endbossStatusBar);
+        
         this.addToMap(this.gemBar);
         this.ctx.font = "15px Arial";
         this.ctx.fillStyle = this.gemBarColour;
@@ -121,6 +135,7 @@ class World {
 
         
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.statusBarsofEnemies);
         this.addObjectsToMap(this.throwableObject)
         this.addToMap(this.character);
 

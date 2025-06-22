@@ -1,4 +1,4 @@
-class EnenmyStatusBar extends DrawableObject{
+class EnemyStatusBar extends MovableObject{
 
 IMAGES = [
         './img/statusbars/1_statusbar/2_statusbar_health/blue/0.png',
@@ -15,12 +15,28 @@ IMAGES = [
     constructor() {
         super();
         this.loadImages(this.IMAGES);
-        this.x = 20;
-        this.y = 30;
         this.width = 80;
         this.height = 20;
         this.setPercentage(100);
+        this.animate();
     }
+
+    /*constructor() {
+        super().loadImage('img/werewolf/Black_Werewolf/run1.png')
+        this.x = 100 + Math.random() * 300;
+        this.loadImages(this.IMAGES_WALKING);
+        this.animate();
+        this.speed = 0.2 + Math.random() * 0.5;
+    }*/
+
+    animate() {
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 60);
+        
+    }
+
+
 
     setPercentage(percentage) {
         this.percentage = percentage;
