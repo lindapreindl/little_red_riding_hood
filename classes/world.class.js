@@ -20,12 +20,12 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.generateEnemyStatusbars();
     }
 
     run() {
         setInterval(() => {
 
-            this.generateEnemyStatusbars();
             this.checkCollisions();
             this.checkThrowObjects();
         }, 200);
@@ -47,6 +47,7 @@ class World {
             statusbar.speed = enemy.speed;
             this.statusBarsofEnemies.push(statusbar);
                 }
+                console.log(statusbar, ' of ' );
     }
 
 
